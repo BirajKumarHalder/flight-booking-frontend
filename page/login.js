@@ -21,9 +21,8 @@ loginForm.addEventListener("submit", (e) => {
                     if (loginAsAdmin) {
                         $('#main').load("./page/admin.html");
                     } else {
-                        $('#main').load("./page/flight-search.html");
+                        $('#main').load("./page/user.html");
                     }
-
                     $('#header').load("#header");
                 } else {
                     document.getElementById("errorMessage").innerText = "Invalid credentials";

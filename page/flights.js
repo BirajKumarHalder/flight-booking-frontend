@@ -142,7 +142,6 @@ flightAddForm.addEventListener("submit", (e) => {
             }]),
             cache: false,
             contentType: 'application/json',
-            processData: false,
             success: function (flightSavedResponse) {
                 $('#flightAddForm').trigger("reset");
                 if (flightSavedResponse && flightSavedResponse.length > 0) {
@@ -192,7 +191,6 @@ function disableFlightSwitchAction(event, flightId) {
             console.log(error);
         }
     });
-
 }
 
 function getFlightFormattedHtml(flight) {

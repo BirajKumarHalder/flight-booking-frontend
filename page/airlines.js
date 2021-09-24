@@ -69,6 +69,7 @@ airlineAddForm.addEventListener("submit", (e) => {
                                     $('#allAirlines').append(html);
                                     $('#al-' + airline.airlineId).find('input[type=checkbox]').prop('checked', airline.active);
                                     $('#al-' + airline.airlineId).find('label[for=disableAirlineSwitch]').text(airline.active ? "Disable" : "Enable");
+                                    $('#airlineList').append(new Option(airline.airlineName, airline.airlineId));
                                 }
                             }
                             document.getElementById("airlineAddSuccessMessage").innerText = "Airlines saved successfully.";
@@ -98,6 +99,12 @@ function disableAirlineSwitchAction(event, airlineId) {
         success: modifiedAirlineId => {
             $('#al-' + modifiedAirlineId).find('input[type=checkbox]').prop('checked', event.target.checked);
             $('#al-' + modifiedAirlineId).find('label[for=disableAirlineSwitch]').text(event.target.checked ? "Disable" : "Enable");
+            if (event.target.checked) {
+                $('#airlineList').append(new Option(airline.airlineName, airline.airlineId));
+            } else {
+                $('#airlineList option[value=' + modifiedAirlineId + ']').remove();
+            }
+
         },
         error: error => {
             console.log(error);

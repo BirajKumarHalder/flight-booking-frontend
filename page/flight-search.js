@@ -11,8 +11,8 @@ $(function () {
             }
         }
     });
-    $("#journeyDate").datepicker();
-    $("#returnDate").datepicker();
+    $("#journeyDate").datepicker({ dateFormat: 'dd/mm/yy' });
+    $("#returnDate").datepicker({ dateFormat: 'dd/mm/yy' });
     $('input:radio[name=journeyType][value=oneway]').prop('checked', true);
     $("input[type='text'][name='returnDate']").prop("disabled", true);
     $("input[type='radio'][name='journeyType']").click(function () {
@@ -37,8 +37,11 @@ flightSearchForm.addEventListener("submit", (e) => {
     } else if (journeyType === "roundtrip" && !returnDate) {
         document.getElementById("errorMessage").innerText = "Please provide required inputs";
     } else {
-        console.log(from)
-        console.log(journeyDate)
-        alert("search flight");
+        sessionStorage.setItem("from", from);
+        sessionStorage.setItem("to", to);
+        sessionStorage.setItem("journeyType", journeyType);
+        sessionStorage.setItem("journeyDate", journeyDate);
+        sessionStorage.setItem("returnDate", returnDate);
+        $('#booking').load("./page/flight-result.html");
     }
-});
+}); 

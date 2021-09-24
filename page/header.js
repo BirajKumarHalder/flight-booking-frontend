@@ -54,15 +54,13 @@ document.getElementById("adminButton").onclick = function () {
 }
 
 document.getElementById("userButton").onclick = function () {
-    $('#main').load("./page/flight-search.html");
+    $('#main').load("./page/user.html");
     $("#adminButton").show();
     $("#userButton").hide();
 }
 
 document.getElementById("logoutButton").onclick = function () {
-    sessionStorage.removeItem("loggedIn");
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("userId");
+    sessionStorage.clear();
     $('#header').load('#header');
-    $('#main').load("./page/flight-search.html");
+    $('#main').load("./page/user.html");
 }
