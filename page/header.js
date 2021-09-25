@@ -11,9 +11,11 @@ $(document).ready(function () {
                     let role = response.role;
                     if (role === "ADMIN") {
                         $("#adminButton").show();
+                        $("#bookingHistory").show();
                         $("#userButton").hide();
                     } else {
                         $("#adminButton").hide();
+                        $("#bookingHistory").hide();
                         $("#userButton").hide();
                     }
                     $("#signInCol").hide();
@@ -50,12 +52,21 @@ document.getElementById("loginButton").onclick = function () {
 document.getElementById("adminButton").onclick = function () {
     $('#main').load("./page/admin.html");
     $("#adminButton").hide();
+    $("#bookingHistory").hide();
     $("#userButton").show();
 }
 
 document.getElementById("userButton").onclick = function () {
     $('#main').load("./page/user.html");
     $("#adminButton").show();
+    $("#bookingHistory").show();
+    $("#userButton").hide();
+}
+
+document.getElementById("bookingHistory").onclick = function () {
+    $('#main').load("./page/booking-history.html");
+    $("#adminButton").show();
+    $("#bookingHistory").show();
     $("#userButton").hide();
 }
 

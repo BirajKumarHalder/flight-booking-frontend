@@ -1,6 +1,13 @@
 <link rel="stylesheet" href="page/booking.css">
 <div class="card booking-card">
+    <div id="bookingError" class="text-danger fw-bold"> </div>
     <div class="card-body">
+        <div class="card">
+            <div class="card-body">
+                <h5>Selected flights</h5>
+                <div id="selectedFlights"></div>
+            </div>
+        </div>
         <div class="card">
             <div class="card-body">
                 <form onsubmit="applyCoupon(event)">
@@ -24,6 +31,7 @@
         </div>
         <div class="card">
             <div class="card-body">
+                <div id="passengerNotAddedMessage" class="text-danger fw-bold"></div>
                 <div class="row g-3">
                     <div class="col-auto">
                         <label for="coupon" class="form-label">Number of passengers</label>

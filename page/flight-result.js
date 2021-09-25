@@ -78,7 +78,6 @@ search = (request) => {
                         const html = getRoasterFormattedHtml(availableRoaster);
                         $('#searchResult').append(html);
                     }
-
                 } else {
                     const html = '<div class="card shadow-sm mb-1"> <div class="card-body">No flights availabe for this journey</div></div>';
                     $('#searchResult').html(html);
