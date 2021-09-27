@@ -94,5 +94,38 @@ viewTicket = (ticketNumber) => {
 }
 
 downloadTicket = (ticketNumber) => {
-    alert("downloading ticket " + ticketNumber);
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/v1.0/flight/download-ticket",
+        data: { "ticket": ticketNumber },
+        headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
+        dataType: 'text',
+        success: function (response) {
+            console.log(response);
+            let pdfbytes = base64ToArrayBuffer(response);
+            saveByteArray("ticket-" + ticketNumber, pdfbytes);
+        },
+        error: function (error) {
+            console.log(error)
+        }
+    });
 }
+
+function base64ToArrayBuffer(base64) {
+    var binaryString = window.atob(base64);
+    var binaryLen = binaryString.length;
+    var bytes = new Uint8Array(binaryLen);
+    for (var i = 0; i < binaryLen; i++) {
+        var ascii = binaryString.charCodeAt(i);
+        bytes[i] = ascii;
+    }
+    return bytes;
+}
+
+function saveByteArray(reportName, byte) {
+    var blob = new Blob([byte], { type: "application/pdf" });
+    var link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = reportName;
+    link.click();
+};
