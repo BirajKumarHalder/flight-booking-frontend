@@ -101,7 +101,6 @@ downloadTicket = (ticketNumber) => {
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         dataType: 'text',
         success: function (response) {
-            console.log(response);
             let pdfbytes = base64ToArrayBuffer(response);
             saveByteArray("ticket-" + ticketNumber, pdfbytes);
         },
