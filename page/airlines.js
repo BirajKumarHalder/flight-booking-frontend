@@ -1,7 +1,7 @@
 $(function () {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/all-airlines",
+        url: "http://localhost:8080/api/v1.0/flight/secure/all-airlines",
         data: { "include-inactive": true },
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         success: function (response) {
@@ -36,7 +36,7 @@ airlineAddForm.addEventListener("submit", (e) => {
     } else {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/api/v1.0/flight/upload-file",
+            url: "http://localhost:8080/api/v1.0/flight/secure/upload-file",
             headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
             data: data,
             dataType: 'text',
@@ -48,7 +48,7 @@ airlineAddForm.addEventListener("submit", (e) => {
                 if (savedFileLogoId) {
                     $.ajax({
                         type: "POST",
-                        url: "http://localhost:8080/api/v1.0/flight/add-airline",
+                        url: "http://localhost:8080/api/v1.0/flight/secure/add-airline",
                         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
                         data: JSON.stringify([{
                             "airlineLogoId": savedFileLogoId,
@@ -92,7 +92,7 @@ airlineAddForm.addEventListener("submit", (e) => {
 function disableAirlineSwitchAction(event, airlineId) {
     $.ajax({
         type: "PUT",
-        url: "http://localhost:8080/api/v1.0/flight/change-airline-status",
+        url: "http://localhost:8080/api/v1.0/flight/secure/change-airline-status",
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         data: { airlineId: airlineId, status: event.target.checked },
         dataType: 'text',

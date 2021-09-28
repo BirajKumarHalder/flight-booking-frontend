@@ -10,7 +10,7 @@ registerForm.addEventListener("submit", (e) => {
     } else {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/api/v1.0/user/register",
+            url: "http://localhost:8080/api/v1.0/user/public/register",
             headers: { "password": password },
             data: JSON.stringify({
                 "email": email,

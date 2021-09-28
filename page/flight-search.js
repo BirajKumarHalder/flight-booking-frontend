@@ -1,8 +1,7 @@
 $(function () {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/all-operating-cities",
-        headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
+        url: "http://localhost:8080/api/v1.0/flight/public/active-operating-cities",
         success: function (response) {
             if (response) {
                 for (let cityCount = 0; cityCount < response.length; cityCount++) {

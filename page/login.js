@@ -9,7 +9,7 @@ loginForm.addEventListener("submit", (e) => {
     } else {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/api/v1.0/user/signin",
+            url: "http://localhost:8080/api/v1.0/user/public/signin",
             headers: { "password": password },
             data: { signInId: userId, adminLogin: loginAsAdmin },
             dataType: 'text',

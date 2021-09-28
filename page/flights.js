@@ -1,7 +1,7 @@
 $(function () {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/all-airlines",
+        url: "http://localhost:8080/api/v1.0/flight/secure/all-airlines",
         data: { "include-inactive": false },
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         success: (airlines) => {
@@ -14,7 +14,7 @@ $(function () {
     })
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/all-meals",
+        url: "http://localhost:8080/api/v1.0/flight/secure/all-meals",
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         success: (meals) => {
             if (meals) {
@@ -31,7 +31,7 @@ $(function () {
     })
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/all-operating-cities",
+        url: "http://localhost:8080/api/v1.0/flight/secure/all-operating-cities",
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         success: function (response) {
             if (response) {
@@ -43,7 +43,7 @@ $(function () {
     });
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/all-flight",
+        url: "http://localhost:8080/api/v1.0/flight/secure/all-flight",
         data: { "include-inactive": true },
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         success: function (response) {
@@ -105,7 +105,7 @@ flightAddForm.addEventListener("submit", (e) => {
     } else {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/api/v1.0/flight/add-flight",
+            url: "http://localhost:8080/api/v1.0/flight/secure/add-flight",
             headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
             data: JSON.stringify([{
                 "active": true,
@@ -179,7 +179,7 @@ function mealSelectionChange(mealId, event) {
 function disableFlightSwitchAction(event, flightId) {
     $.ajax({
         type: "PUT",
-        url: "http://localhost:8080/api/v1.0/flight/change-flight-status",
+        url: "http://localhost:8080/api/v1.0/flight/secure/change-flight-status",
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         data: { flightId: flightId, status: event.target.checked },
         dataType: 'text',

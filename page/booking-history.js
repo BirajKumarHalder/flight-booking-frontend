@@ -2,7 +2,7 @@ $(function () {
     const email = sessionStorage.getItem("userId")
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/search-pnr-by-user",
+        url: "http://localhost:8080/api/v1.0/flight/secure/search-pnr-by-user",
         data: { "email": email },
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         success: function (pnrDetails) {

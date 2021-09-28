@@ -2,7 +2,7 @@ $(document).ready(function () {
     if (sessionStorage.getItem("loggedIn") && sessionStorage.getItem("loggedIn") === "true") {
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/api/v1.0/user/user-details",
+            url: "http://localhost:8080/api/v1.0/user/secure/user-details",
             headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
             data: { signInId: sessionStorage.getItem("userId") },
             success: function (response) {
@@ -71,7 +71,17 @@ document.getElementById("bookingHistory").onclick = function () {
 }
 
 document.getElementById("logoutButton").onclick = function () {
-    sessionStorage.clear();
-    $('#header').load('#header');
-    $('#main').load("./page/user.html");
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:8080/api/v1.0/user/public/signout",
+        headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
+        success: function () {
+            sessionStorage.clear();
+            $('#header').load('#header');
+            $('#main').load("./page/user.html");
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
 }

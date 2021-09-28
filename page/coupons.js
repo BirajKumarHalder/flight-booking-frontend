@@ -10,7 +10,7 @@ $(function () {
     });
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/all-coupons",
+        url: "http://localhost:8080/api/v1.0/flight/secure/all-coupons",
         data: { "include-inactive": true },
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         success: function (coupons) {
@@ -47,7 +47,7 @@ function getCouponFormattedHtml(coupon) {
 function disableCouponSwitchAction(event, couponId) {
     $.ajax({
         type: "PUT",
-        url: "http://localhost:8080/api/v1.0/flight/change-coupon-status",
+        url: "http://localhost:8080/api/v1.0/flight/secure/change-coupon-status",
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         data: { couponId: couponId, status: event.target.checked },
         dataType: 'text',
@@ -75,7 +75,7 @@ couponAddForm.addEventListener("submit", (e) => {
     } else {
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/api/v1.0/flight/add-coupon",
+            url: "http://localhost:8080/api/v1.0/flight/secure/add-coupon",
             headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
             data: JSON.stringify([{
                 "active": true,

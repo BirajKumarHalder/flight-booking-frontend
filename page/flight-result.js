@@ -58,7 +58,7 @@ bookTrips = () => {
 search = (request) => {
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/api/v1.0/flight/search",
+        url: "http://localhost:8080/api/v1.0/flight/public/search",
         data: JSON.stringify(request),
         cache: false,
         contentType: 'application/json',

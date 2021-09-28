@@ -27,7 +27,7 @@ getSelectedFlights = (selectedFlights) => {
     });
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/api/v1.0/flight/search",
+        url: "http://localhost:8080/api/v1.0/flight/public/search",
         data: JSON.stringify(request),
         cache: false,
         contentType: 'application/json',
@@ -50,7 +50,7 @@ applyCoupon = (e) => {
     const couponName = document.getElementById("coupon").value;
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/get-by-coupon-name",
+        url: "http://localhost:8080/api/v1.0/flight/secure/get-by-coupon-name",
         data: { "name": couponName },
         success: function (coupons) {
             if (coupons && coupons.length > 0) {
@@ -166,7 +166,7 @@ bookTrips = () => {
     });
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/api/v1.0/flight/book",
+        url: "http://localhost:8080/api/v1.0/flight/secure/book",
         data: JSON.stringify(bookingRequest),
         cache: false,
         contentType: 'application/json',

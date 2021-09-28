@@ -3,7 +3,7 @@ $(function () {
     sessionStorage.removeItem("pnr")
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/search-pnr",
+        url: "http://localhost:8080/api/v1.0/flight/secure/search-pnr",
         data: { "pnr": pnrNumber },
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         success: function (pnrDetails) {
@@ -64,7 +64,7 @@ getPnrTicketFormattedHtml = (booking, ticket) => {
 viewTicket = (ticketNumber) => {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/search-ticket",
+        url: "http://localhost:8080/api/v1.0/flight/secure/search-ticket",
         data: { "ticket": ticketNumber },
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         success: function (ticketDetails) {
@@ -96,7 +96,7 @@ viewTicket = (ticketNumber) => {
 downloadTicket = (ticketNumber) => {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/download-ticket",
+        url: "http://localhost:8080/api/v1.0/flight/secure/download-ticket",
         data: { "ticket": ticketNumber },
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         dataType: 'text',

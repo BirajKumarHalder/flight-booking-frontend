@@ -9,7 +9,7 @@ function searchRoaster(e) {
     const roasterDate = document.getElementById("roasterDate").value;
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/api/v1.0/flight/roaster-for-date",
+        url: "http://localhost:8080/api/v1.0/flight/secure/roaster-for-date",
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         data: { "date": roasterDate },
         success: function (roasters) {
@@ -49,7 +49,7 @@ function disableRoasterSwitchAction(event, roasterFlightId) {
     }
     $.ajax({
         type: "POST",
-        url: "http://localhost:8080/api/v1.0/flight/schedule-roaster",
+        url: "http://localhost:8080/api/v1.0/flight/secure/schedule-roaster",
         headers: { "AccessToken": "Bearer " + sessionStorage.getItem("token") },
         data: JSON.stringify([roaster]),
         cache: false,
