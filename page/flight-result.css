@@ -1,3 +1,8 @@
 .flight-result-card {
     background-color: rgba(250, 250, 250, 0.9);
 }
+
+.img-logo {
+    max-width: 3em; 
+    max-height: 3em;
+}

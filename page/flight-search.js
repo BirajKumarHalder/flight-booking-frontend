@@ -10,8 +10,8 @@ $(function () {
             }
         }
     });
-    $("#journeyDate").datepicker({ dateFormat: 'dd/mm/yy' });
-    $("#returnDate").datepicker({ dateFormat: 'dd/mm/yy' });
+    $("#journeyDate").datepicker({ dateFormat: 'mm-dd-yy' });
+    $("#returnDate").datepicker({ dateFormat: 'mm-dd-yy' });
     $('input:radio[name=journeyType][value=oneway]').prop('checked', true);
     $("input[type='text'][name='returnDate']").prop("disabled", true);
     $("input[type='radio'][name='journeyType']").click(function () {
